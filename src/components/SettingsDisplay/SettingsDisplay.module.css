@@ -1,0 +1,93 @@
+.displayWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.settingsWrap {
+  display: block;
+  margin-top: 20px;
+  margin-left: 80px;
+  margin-bottom: 80px;
+  width: 585px;
+  height: 717px;
+  top: 154px;
+  color: #ffffff;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 18px;
+  background: linear-gradient(
+      90deg,
+      #f78ca0 0%,
+      #f9748f 20.31%,
+      #fd868c 66.67%,
+      #fe9a8b 100%
+    ),
+    #feafaf;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  padding: 65px 28px 0px 29px;
+}
+
+.settingsWrap input {
+  width: 565px;
+  height: 73px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 3px;
+  outline: none;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 23px;
+  font-style: normal;
+  font-family: Roboto;
+  border: none;
+  padding-left: 17px;
+}
+
+.buttonsWrapper {
+  display: flex;
+  margin-left: 267px;
+}
+
+.buttons {
+  width: 139px;
+  height: 59px;
+  border: 1px solid #fafafa;
+  box-sizing: border-box;
+  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.25));
+  border-radius: 300px;
+  margin-top: 28px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.buttonsInside {
+  width: 59px;
+  height: 30px;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 25px;
+  line-height: 30px;
+  margin: 11px 40px;
+}
+
+.pomodoro {
+  margin-bottom: 9px;
+}
+
+.short {
+  margin-bottom: 9px;
+  margin-top: 23px;
+}
+
+.long {
+  margin-bottom: 9px;
+  margin-top: 23px;
+}
+
+.number {
+  margin-bottom: 9px;
+  margin-top: 23px;
+}
