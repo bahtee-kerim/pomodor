@@ -27,7 +27,7 @@ class TimerWork extends React.Component {
         intervalId: intervalId
       })
 
-      this.hideButtons();
+      
     }
 
     pausingTimer() {
@@ -61,7 +61,7 @@ class TimerWork extends React.Component {
               this.setState({
                 isSession: false
               })
-              for(let i = 0; i < 2; i++) {
+              for(let i = 0; i < this.props.state.timeBetween; i++) {
                 this.props.toggleIntervals(this.state.isSession)
               }
               
@@ -69,7 +69,7 @@ class TimerWork extends React.Component {
               this.setState({
                 isSession: true
               })
-              for(let i = 0; i < 2; i++) {
+              for(let i = 0; i < this.props.state.timeBetween; i++) {
                 this.props.toggleIntervals(this.state.isSession)
               }
               this.pausingTimer();
