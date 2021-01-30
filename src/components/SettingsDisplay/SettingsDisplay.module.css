@@ -1,16 +1,20 @@
 .displayWrapper {
   display: flex;
-  flex-direction: column;
+
   align-items: center;
+  justify-content: center;
+}
+
+.faviconImage {
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
 }
 
 .settingsWrap {
   display: block;
   margin-top: 20px;
-  margin-left: 80px;
   margin-bottom: 80px;
-  width: 585px;
-  height: 717px;
   top: 154px;
   color: #ffffff;
   font-style: normal;
@@ -27,7 +31,7 @@
     #feafaf;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
   border-radius: 30px;
-  padding: 65px 28px 0px 29px;
+  padding: 65px 28px 140px 29px;
 }
 
 .settingsWrap input {

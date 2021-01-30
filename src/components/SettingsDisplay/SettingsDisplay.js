@@ -1,6 +1,6 @@
 import React from 'react';
-import Settings from '../Settings/Settings';
 import s from './SettingsDisplay.module.css';
+import favicon from './../../common/icons/settings-2.svg';
 
 class SettingsDisplay extends React.Component  {
     constructor() {
@@ -16,7 +16,7 @@ class SettingsDisplay extends React.Component  {
       this.changeNumberBetween = this.changeNumberBetween.bind(this);
       this.closePopupAndSave = this.closePopupAndSave.bind(this);
       this.closePopup = this.closePopup.bind(this);
-      this.showPopup = this.showPopup.bind(this);
+      this.showSettings = this.showSettings.bind(this);
     }
 
     changeSessionTime(e) {
@@ -54,21 +54,26 @@ class SettingsDisplay extends React.Component  {
       })
       this.props.notChangeParentComponent();
     }
-
-    showPopup() {
+  
+    showSettings() {
       this.setState({
         display: 'block'
       })
     }
-  
+
     render() {
 
       const style = {display: this.state.display}
       
       return (
-        <div className={s.displayWrapper}>
 
-          <Settings showPopup={this.showPopup} />
+        <div>
+
+          <div onClick={this.showSettings} className={s.faviconImage}>
+            <img src={favicon} />
+          </div>
+
+        <div className={s.displayWrapper}>
 
           <div className={s.settingsWrap} style={style}>
   
@@ -92,6 +97,7 @@ class SettingsDisplay extends React.Component  {
           </div>
           </div>
           
+        </div>
         </div>
       )
     }

@@ -97,7 +97,8 @@ class TimerWork extends React.Component {
     render() {
       const style = {display: this.state.display}
       return (
-        <div className={s.allWrapper}>
+        <div className={s.wrap}>
+          <div className={s.allWrapper}>
           <div className={s.timeWrapper}><span>{this.props.state.timerMinute < 10 
           ? '0' + this.props.state.timerMinute : this.props.state.timerMinute }</span>
           <span>:</span>
@@ -113,6 +114,7 @@ class TimerWork extends React.Component {
           <div className={s.buttonsFourth}><div className={s.buttonsInside}>Stop</div></div>
           </div>
           
+        </div>
         </div>
       )
     }
