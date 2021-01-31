@@ -27,7 +27,7 @@ class TimerWork extends React.Component {
         intervalId: intervalId
       })
 
-      
+      this.hideButtons();
     }
 
     pausingTimer() {
@@ -35,15 +35,9 @@ class TimerWork extends React.Component {
     }
 
     hideButtons() {
-      if(this.state.display === 'block') {
-        this.setState({
-          display: 'none'
-        })
-      } else {
-        this.setState({
-          display: 'block'
-        })
-      }
+      this.setState({
+        display: 'block'
+      })
     }
 
     showButtons() {
@@ -110,7 +104,7 @@ class TimerWork extends React.Component {
           <div className={s.buttonsWrapper}>
           <div onClick={this.startingTimer} className={s.buttons} style={style}><div className={s.buttonsInside}>Start</div></div>
           <div onClick={this.pausingTimer} className={s.buttonsSecond } style={style} ><div className={s.buttonsInside}>Pause</div></div>
-          <div className={s.buttonsThird} style={style}><div className={s.buttonsInside}>Continue</div></div>
+          <div className={s.buttonsThird}><div className={s.buttonsInside}>Continue</div></div>
           <div className={s.buttonsFourth}><div className={s.buttonsInside}>Stop</div></div>
           </div>
           

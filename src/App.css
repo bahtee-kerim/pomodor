@@ -10,7 +10,9 @@
     #fe9a8b 100%
   );
 }
-.wrapper img {
-  float: right;
-  margin: 20px 20px;
+
+@media (max-width: 650px) {
+  .wrapper {
+    position: absolute;
+  }
 }

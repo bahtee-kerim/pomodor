@@ -1,6 +1,5 @@
 .displayWrapper {
   display: flex;
-
   align-items: center;
   justify-content: center;
 }
@@ -9,13 +8,14 @@
   display: flex;
   justify-content: flex-end;
   cursor: pointer;
+  margin-top: 20px;
+  margin-right: 20px;
 }
 
 .settingsWrap {
   display: block;
-  margin-top: 20px;
+  margin-top: 30px;
   margin-bottom: 80px;
-  top: 154px;
   color: #ffffff;
   font-style: normal;
   font-weight: normal;
@@ -94,4 +94,14 @@
 .number {
   margin-bottom: 9px;
   margin-top: 23px;
+}
+
+@media (max-width: 650px) {
+  .settingsWrap input {
+    width: 300px;
+  }
+
+  .buttonsWrapper {
+    margin-left: 0px;
+  }
 }

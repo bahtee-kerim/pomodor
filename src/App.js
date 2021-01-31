@@ -94,8 +94,6 @@ class App extends React.Component {
   render() {
     return (
       <div className='wrapper'>
-        
-        
   
         <SettingsDisplay state={this.state} 
         setTimerMinute={this.setTimerMinute}
