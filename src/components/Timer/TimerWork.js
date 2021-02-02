@@ -10,7 +10,10 @@ class TimerWork extends React.Component {
         isSession: true,
         timerSecond: 0,
         intervalId: 0,
-        display: '',
+        pausingDisplay: '',
+        startingDisplay: '',
+        continueDisplay: '',
+        stopDisplay: '',
         stroke: '',
         strokeWidth: 0,
         cx: 0,
@@ -64,21 +67,47 @@ class TimerWork extends React.Component {
 
     startingTimer = () => {
 
-      this.props.playingTimer()
-      
-
       let intervalId = setInterval(this.decreaseTimer, 1000)
       
       this.setState({
-        intervalId: intervalId
+        intervalId: intervalId,
+        startingDisplay: 'none',
+        pausingDisplay: 'block'
       })
-
-      this.hideButtons();
-      this.pausingTimer();
       this.setProgress(this.state.count)
     }
 
+    continueTimer = () => {
+      let intervalId = setInterval(this.decreaseTimer, 1000)
+
+      this.setState({
+        intervalId: intervalId,
+        startingDisplay: 'none',
+        pausingDisplay: 'block',
+        continueDisplay: 'none',
+        stopDisplay: 'none'
+      })
+    }
+
+    stopTimer = () => {
+      clearInterval(this.state.intervalId)
+      this.props.notChangeParentComponent();
+      this.setState({
+        timerSecond: 0,
+        startingDisplay: 'block',
+        pausingDisplay: 'none',
+        continueDisplay: 'none',
+        stopDisplay: 'none'
+      })
+      
+    }
+
     pausingTimer = ()  => {
+      this.setState({
+        pausingDisplay: 'none',
+        continueDisplay: 'block',
+        stopDisplay: 'block'
+      })
       clearInterval(this.state.intervalId)
     }
 
@@ -139,13 +168,14 @@ class TimerWork extends React.Component {
     }
 
     render() {
-      let style = {display: this.state.display}
+
       return (
         <div className={s.wrap}>
           <div className={s.allWrapper}>
 
           <svg className={s.progressRing} style={{width: '350px', height: '350px'}}>
-            <circle id="ring" ref={this.svgRef} className={s.progressRingCircle} stroke={this.state.stroke} strokeWidth={this.state.strokeWidth}
+            <circle id="ring" ref={this.svgRef} className={s.progressRingCircle}
+            stroke={this.state.stroke} strokeWidth={this.state.strokeWidth}
             cx={this.state.cx} cy={this.state.cy} r={this.state.r} fill={this.state.fill} 
               style={{
               strokeDasharray: this.state.strokeDasharray,
@@ -164,10 +194,14 @@ class TimerWork extends React.Component {
           : this.state.timerSecond}</span>
           </div>
           <div className={s.buttonsWrapper}>
-          <div onClick={this.startingTimer} className={s.buttons} style={style}><div className={s.buttonsInside}>
-            {this.props.state.isPlay? 'Continue' : 'Start'}</div></div>
-          <div onClick={this.pausingTimer} className={s.buttonsSecond } style={style} ><div className={s.buttonsInside}>Pause</div></div>
-          <div className={s.buttonsThird}><div className={s.buttonsInside}>Stop</div></div>
+          <div onClick={this.startingTimer} className={s.buttons} 
+          style={{display: this.state.startingDisplay}}><div className={s.buttonsInside}>Start</div></div>
+          <div onClick={this.pausingTimer} className={s.buttonsSecond } 
+          style={{display: this.state.pausingDisplay}}><div className={s.buttonsInside}>Pause</div></div>
+          <div onClick={this.continueTimer} className={s.continue} 
+          style={{display: this.state.continueDisplay}}><div className={s.buttonsInside}>Continue</div></div>
+          <div onClick={this.stopTimer} className={s.buttonsThird} 
+          style={{display: this.state.stopDisplay}}><div className={s.buttonsInside}>Stop</div></div>
           </div>
           
         </div>

@@ -114,7 +114,8 @@ class App extends React.Component {
         resetSession={this.resetSession}
         toggleIntervals={this.toggleIntervals}
         playingTimer={this.playingTimer}
-        changeBackground={this.changeBackground}  />
+        changeBackground={this.changeBackground}
+        notChangeParentComponent={this.notChangeParentComponent}  />
         
       </div>
     );
