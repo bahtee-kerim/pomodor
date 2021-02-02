@@ -10,16 +10,9 @@ class SettingsDisplay extends React.Component  {
         display: ''
       }
 
-      this.changeSessionTime = this.changeSessionTime.bind(this);
-      this.changeShortBreakTime = this.changeShortBreakTime.bind(this); 
-      this.changeLongBteakTime = this.changeLongBteakTime.bind(this);
-      this.changeNumberBetween = this.changeNumberBetween.bind(this);
-      this.closePopupAndSave = this.closePopupAndSave.bind(this);
-      this.closePopup = this.closePopup.bind(this);
-      this.showSettings = this.showSettings.bind(this);
     }
 
-    changeSessionTime(e) {
+    changeSessionTime = (e) => {
       
       let session = e.target.value;
       if(session <= 60) {
@@ -28,34 +21,34 @@ class SettingsDisplay extends React.Component  {
       
     }
 
-    changeShortBreakTime(e) {
+    changeShortBreakTime = (e) => {
       let shortBreak = e.target.value;
       this.props.setShortBreakTime(shortBreak)
     }
 
-    changeLongBteakTime(e) {
+    changeLongBteakTime = (e) => {
       let longBreak = e.target.value;
       this.props.setLongBreakTime(longBreak)
     }
 
-    changeNumberBetween(e) {
+    changeNumberBetween = (e) => {
       this.props.setNumberBetween(e.target.value)
     }
 
-    closePopupAndSave() {
+    closePopupAndSave = () => {
       this.setState({
         display: 'none'
       })
     }
 
-    closePopup() {
+    closePopup = () => {
       this.setState({
         display: 'none'
       })
       this.props.notChangeParentComponent();
     }
   
-    showSettings() {
+    showSettings = () => {
       this.setState({
         display: 'block'
       })

@@ -13,20 +13,26 @@ class App extends React.Component {
       sessionTime: 25,
       shortBreak: 5,
       longBreak: 15,
-      timeBetween: 4
+      timeBetween: 4,
+      isPlay: false,
+      background: ''
     }
 
-    this.updateTimerMinute = this.updateTimerMinute.bind(this);
-    this.setTimerMinute = this.setTimerMinute.bind(this);
-    this.setShortBreakTime = this.setShortBreakTime.bind(this);
-    this.setLongBreakTime = this.setLongBreakTime.bind(this);
-    this.setNumberBetween =this.setNumberBetween.bind(this);
-    this.toggleIntervals = this.toggleIntervals.bind(this);
-    this.resetSession = this.resetSession.bind(this);
-    this.notChangeParentComponent = this.notChangeParentComponent.bind(this);
   }
 
-  notChangeParentComponent() {
+  changeBackground = () => {
+    this.setState({
+      background: 'linear-gradient(180deg, #48C6EF 0%, #6F86D6 100%);'
+    })
+  }
+
+  playingTimer = () => {
+    this.setState({
+      isPlay: true
+    })
+  }
+
+  notChangeParentComponent = () => {
     this.setState({
       timerMinute: 25,
       sessionTime: 25,
@@ -36,7 +42,7 @@ class App extends React.Component {
     })
   }
 
-  toggleIntervals(isSession) {
+  toggleIntervals = (isSession) => {
     if(isSession) {
       this.setState({
         timerMinute: this.state.sessionTime 
@@ -49,13 +55,13 @@ class App extends React.Component {
 
   }
 
-  resetSession() {
+  resetSession = () => {
     this.setState({
       timerMinute: this.state.shortBreak
     })
   }
 
-  updateTimerMinute() {
+  updateTimerMinute = () => {
     if(this.state.timerMinute === 0) {
       return
     }
@@ -66,34 +72,35 @@ class App extends React.Component {
     })
   }
 
-  setTimerMinute(session) {
+  setTimerMinute = (session) => {
     this.setState({
       timerMinute: session,
       sessionTime: session
     })
   }
 
-  setShortBreakTime(shortBreak) {
+  setShortBreakTime = (shortBreak) => {
     this.setState({
       shortBreak: shortBreak
     })
   }
 
-  setLongBreakTime(longBreak) {
+  setLongBreakTime = (longBreak) => {
     this.setState({
       longBreak: longBreak
     })
   }
 
-  setNumberBetween(number) {
+  setNumberBetween = (number) => {
     this.setState({
       timeBetween: number
     })
   }
 
   render() {
+    const style={background: this.state.background}
     return (
-      <div className='wrapper'>
+      <div className='wrapper' style={style}>
   
         <SettingsDisplay state={this.state} 
         setTimerMinute={this.setTimerMinute}
@@ -105,7 +112,9 @@ class App extends React.Component {
         <TimerWork state={this.state}
         updateTimerMinute={this.updateTimerMinute}
         resetSession={this.resetSession}
-        toggleIntervals={this.toggleIntervals}  />
+        toggleIntervals={this.toggleIntervals}
+        playingTimer={this.playingTimer}
+        changeBackground={this.changeBackground}  />
         
       </div>
     );
