@@ -1,5 +1,6 @@
 import React from 'react';
 import s from './SettingsDisplay.module.css';
+import TimerWork from '../Timer/TimerWork';
 import favicon from './../../common/icons/settings-2.svg';
 
 class SettingsDisplay extends React.Component  {
@@ -52,6 +53,7 @@ class SettingsDisplay extends React.Component  {
       this.setState({
         display: 'block'
       })
+      this.props.notChangeParentComponent();
     }
 
     render() {
@@ -91,6 +93,9 @@ class SettingsDisplay extends React.Component  {
           </div>
           
         </div>
+
+        
+
         </div>
       )
     }

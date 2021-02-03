@@ -10,6 +10,7 @@ class TimerWork extends React.Component {
         isSession: true,
         timerSecond: 0,
         intervalId: 0,
+        progressId: 0,
         pausingDisplay: '',
         startingDisplay: '',
         continueDisplay: '',
@@ -63,8 +64,6 @@ class TimerWork extends React.Component {
       })
     }
 
-
-
     startingTimer = () => {
 
       let intervalId = setInterval(this.decreaseTimer, 1000)
@@ -111,20 +110,7 @@ class TimerWork extends React.Component {
       clearInterval(this.state.intervalId)
     }
 
-    hideButtons = () => {
-      this.setState({
-        display: 'block'
-      })
-    }
-
-    showButtons = () => {
-      this.setState({
-        display: 'block'
-      })
-    }
-
     decreaseTimer = () => {
-      
       switch(this.state.timerSecond) {
         case 0:
           if(this.props.state.timerMinute === 0) {
@@ -132,45 +118,38 @@ class TimerWork extends React.Component {
               this.setState({
                 isSession: false
               })
-              for(let i = 0; i < this.props.state.timeBetween; i++) {
-                this.props.toggleIntervals(this.state.isSession)
-                
-              }
-              
+              this.props.toggleIntervals(this.state.isSession)
             }  else {
               this.setState({
                 isSession: true
               })
-              for(let i = 0; i < this.props.state.timeBetween; i++) {
-                this.props.toggleIntervals(this.state.isSession)
-                
-              }
-              
+              this.counter();
+              this.setProgress(this.state.count);
+              this.props.toggleIntervals(this.state.isSession)
             } 
-            
           }
-          this.props.updateTimerMinute();
-          this.setState({
-            timerSecond: 59
-          })
-          
+              this.props.updateTimerMinute();
+              this.setState({
+                timerSecond: 59
+              })
           break;
-        default:
-          this.setState((prevState) => {
-            return {
-              timerSecond: prevState.timerSecond - 1
-            }
-          })
-          
-          break;
+
+          default:
+            this.setState((prevState) => {
+              return {
+                timerSecond: prevState.timerSecond - 1
+              }
+            })
+            break;
       }
-      
     }
 
     render() {
-
       return (
+          <div>
+
         <div className={s.wrap}>
+
           <div className={s.allWrapper}>
 
           <svg className={s.progressRing} style={{width: '350px', height: '350px'}}>
@@ -206,6 +185,7 @@ class TimerWork extends React.Component {
           
         </div>
         </div>
+          </div>
       )
     }
   

@@ -107,7 +107,11 @@ class App extends React.Component {
         setShortBreakTime={this.setShortBreakTime}
         setLongBreakTime={this.setLongBreakTime}
         setNumberBetween={this.setNumberBetween}
-        notChangeParentComponent={this.notChangeParentComponent}  />
+        notChangeParentComponent={this.notChangeParentComponent}
+        updateTimerMinute={this.updateTimerMinute}
+        toggleIntervals={this.toggleIntervals}
+        playingTimer={this.playingTimer}
+        changeBackground={this.changeBackground}  />
 
         <TimerWork state={this.state}
         updateTimerMinute={this.updateTimerMinute}
