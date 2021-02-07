@@ -1,6 +1,5 @@
 import React from 'react';
 import s from './SettingsDisplay.module.css';
-import TimerWork from '../Timer/TimerWork';
 import favicon from './../../common/icons/settings-2.svg';
 
 class SettingsDisplay extends React.Component  {

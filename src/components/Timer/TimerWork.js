@@ -26,7 +26,7 @@ class TimerWork extends React.Component {
         strokeDashoffset: 0,
         transformOrigin: '',
         transform: '',
-        count: 25
+        count: 0
       }
 
       this.svgRef = React.createRef();
@@ -37,9 +37,8 @@ class TimerWork extends React.Component {
   
       this.setState({
         circumference: 2 * Math.PI * this.svgRef.current.r.baseVal.value,
-        strokeDasharray: `${2 * Math.PI * this.svgRef.current.r.baseVal.value} ${2 * Math.PI * this.svgRef.current.r.baseVal.value}`,
+        strokeDasharray: `${2 * Math.PI * this.svgRef.current.r.baseVal.value} ${2 * Math.PI * this.svgRef.current.r.baseVal.value} `,
         strokeDashoffset: 2 * Math.PI * this.svgRef.current.r.baseVal.value,
-
       })
     }
 
@@ -57,15 +56,24 @@ class TimerWork extends React.Component {
     }
 
     counter = () => {
-      this.setState((prevState) => {
-        return {
-          count: prevState.count + 25
-        }
-      })
+
+      if(this.props.state.timerMinute > 0) {
+        this.setState((prevState) => {
+          return {
+            count: prevState.count + (100 / (60 * (this.props.state.timerMinute + 1)) )
+          }
+        })
+      } else {
+        this.setState((prevState) => {
+          return {
+            count: prevState.count + ((100 / 60) / 2)
+          }
+        })
+      }
     }
 
     startingTimer = () => {
-
+      
       let intervalId = setInterval(this.decreaseTimer, 1000)
       
       this.setState({
@@ -73,7 +81,7 @@ class TimerWork extends React.Component {
         startingDisplay: 'none',
         pausingDisplay: 'block'
       })
-      this.setProgress(this.state.count)
+      this.counter()
     }
 
     continueTimer = () => {
@@ -111,37 +119,47 @@ class TimerWork extends React.Component {
     }
 
     decreaseTimer = () => {
-      switch(this.state.timerSecond) {
+      console.log(this.state.count)
+      this.counter()
+      this.setProgress(this.state.count)
+      switch(this.state.timerSecond) { 
+        
         case 0:
+
           if(this.props.state.timerMinute === 0) {
             if(this.state.isSession) {
               this.setState({
                 isSession: false
               })
+
               this.props.toggleIntervals(this.state.isSession)
             }  else {
               this.setState({
                 isSession: true
               })
-              this.counter();
-              this.setProgress(this.state.count);
+
               this.props.toggleIntervals(this.state.isSession)
             } 
+            
           }
               this.props.updateTimerMinute();
               this.setState({
                 timerSecond: 59
               })
+
           break;
 
           default:
+            
             this.setState((prevState) => {
               return {
                 timerSecond: prevState.timerSecond - 1
               }
             })
+
             break;
       }
+      
     }
 
     render() {
@@ -160,7 +178,8 @@ class TimerWork extends React.Component {
               strokeDasharray: this.state.strokeDasharray,
               strokeDashoffset: this.state.strokeDashoffset,
               transformOrigin: this.state.transformOrigin,
-              transform: this.state.transform
+              transform: this.state.transform,
+              transition: 'strokeDashoffset 0.3s'
             }} />
       </svg>
 
