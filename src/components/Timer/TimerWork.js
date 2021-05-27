@@ -57,13 +57,14 @@ class TimerWork extends React.Component {
 
     counter = () => {
 
-      if(this.props.state.timerMinute > 0) {
+      if(this.props.state.timerMinute > 0 && this.state.timerSecond < 60) {
         this.setState((prevState) => {
           return {
             count: prevState.count + (100 / (60 * (this.props.state.timerMinute + 1)) )
           }
         })
-      } else {
+      } 
+      if(this.props.state.timerMinute === 0 && this.state.timerSecond < 60) {
         this.setState((prevState) => {
           return {
             count: prevState.count + ((100 / 60) / 2)
