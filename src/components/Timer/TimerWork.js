@@ -105,7 +105,8 @@ class TimerWork extends React.Component {
         startingDisplay: 'block',
         pausingDisplay: 'none',
         continueDisplay: 'none',
-        stopDisplay: 'none'
+        stopDisplay: 'none',
+        stroke: '',
       })
       
     }
