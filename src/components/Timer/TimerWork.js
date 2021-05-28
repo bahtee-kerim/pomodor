@@ -26,7 +26,7 @@ class TimerWork extends React.Component {
         strokeDashoffset: 0,
         transformOrigin: '',
         transform: '',
-        count: 0
+        count: 1
       }
 
       this.svgRef = React.createRef();
@@ -48,7 +48,7 @@ class TimerWork extends React.Component {
         strokeDashoffset: offset,
         transformOrigin: 'center',
         stroke: '#ffffff',
-        strokeWidth: '8',
+        strokeWidth: '5',
         cx: '175',
         cy: '175',
         transform: "rotate(-90deg)"
@@ -107,6 +107,8 @@ class TimerWork extends React.Component {
         continueDisplay: 'none',
         stopDisplay: 'none',
         stroke: '',
+        strokeWidth: 0,
+        count: 0,
       })
       
     }
@@ -121,7 +123,6 @@ class TimerWork extends React.Component {
     }
 
     decreaseTimer = () => {
-      console.log(this.state.count)
       this.counter()
       this.setProgress(this.state.count)
       switch(this.state.timerSecond) { 
